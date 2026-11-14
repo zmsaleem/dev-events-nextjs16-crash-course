@@ -123,7 +123,8 @@ function normalizeTime(value: string): string {
 eventSchema.pre("save", async function () {
     // Regenerate the slug only when the title is new or has changed.
     if (this.isModified("title") || !this.slug) {
-        this.slug = slugify(this.title);
+        const candidate = slugify(this.title);
+        this.slug = candidate || `event-${this._id}`;
     }
 
     // Normalize only the fields that changed to avoid redundant work.

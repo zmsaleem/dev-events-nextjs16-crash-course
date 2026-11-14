@@ -38,7 +38,7 @@ bookingSchema.index({ eventId: 1 });
 bookingSchema.pre("save", async function () {
     // Verify the referenced event exists, but only when eventId is new or changed.
     if (this.isNew || this.isModified("eventId")) {
-        const eventExists = await Event.exists({ _id: this.eventId });
+        const eventExists = await Event.exists({ _id: this.eventId }).session(this.$session());
         if (!eventExists) {
             throw new Error(`Event with id ${this.eventId.toString()} does not exist`);
         }
