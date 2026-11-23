@@ -1,12 +1,10 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from 'react';
 import ExploreBtn from "@/components/ExploreBtn";
 import EventCard from "@/components/EventCard";
-import {IEvent} from "@/database";
+import { IEvent } from "@/database";
 import Event from "@database/event.model";
 import connectToDatabase from "@/lib/mongodb";
-import {cacheLife} from "next/cache";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { cacheLife } from "next/cache";
 
 const EventList = async () => {
     'use cache';
@@ -25,13 +23,13 @@ const EventList = async () => {
                 </li>
             ))}
         </ul>
-    )
-}
+    );
+};
 
-const Page  = () => {
+const Page = () => {
     return (
         <section>
-            <h1 className="text-center">The Hub for Every Dev<br /> Event You Can't Miss</h1>
+            <h1 className="text-center">The Hub for Every Dev <br /> Event You Can't Miss</h1>
             <p className="text-center mt-5">Hackathons, Meetups, and Conferences, All in One Place</p>
 
             <ExploreBtn />
@@ -44,6 +42,7 @@ const Page  = () => {
                 </Suspense>
             </div>
         </section>
-    )
-}
-export default Page
+    );
+};
+
+export default Page;
