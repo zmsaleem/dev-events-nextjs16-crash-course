@@ -6,6 +6,8 @@ import Event from "@database/event.model";
 import connectToDatabase from "@/lib/mongodb";
 import {cacheLife} from "next/cache";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const EventList = async () => {
     'use cache';
     cacheLife('hours');
